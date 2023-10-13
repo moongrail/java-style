@@ -5,12 +5,10 @@ import java.util.stream.IntStream;
 
 public class MissingNumberInEnd {
     public static void main(String[] args) {
-        int[] arrayToTest = getArrayToTest(1);
+        int[] arrayToTest = getArrayToTest();
         printAndAddMissingNumber(arrayToTest);
     }
 
-    //Не совсем совершенный алгоритм, работает только если неправильный элемент лежит в конце массива
-    //и положительный.
     private static void printAndAddMissingNumber(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             int previous = array[i];
@@ -33,8 +31,8 @@ public class MissingNumberInEnd {
         }
     }
 
-    private static int[] getArrayToTest(int increment) {
-        int[] array = IntStream.iterate(0, i -> i + increment)
+    private static int[] getArrayToTest() {
+        int[] array = IntStream.iterate(0, i -> i + 1)
                 .limit(101)
                 .toArray();
         int[] newArray = new int[array.length + 1];
