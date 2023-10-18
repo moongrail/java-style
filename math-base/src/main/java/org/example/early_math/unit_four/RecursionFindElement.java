@@ -12,17 +12,13 @@ public class RecursionFindElement {
     }
 
     private static void printKeyNumber(int[] array, int key) {
-        int resultIndex = findKeyIndex(array, key);
+        int resultIndex = findIndexRecursive(array, key, 0);
         if (resultIndex != -1) {
             int resultNumber = array[resultIndex];
             System.out.println("Index " + resultIndex + ", Number = " + resultNumber);
         } else {
             System.out.println("Not found.");
         }
-    }
-
-    private static int findKeyIndex(int[] array, int key) {
-        return findIndexRecursive(array, key, 0);
     }
 
     private static int findIndexRecursive(int[] array, int key, int startIndex) {
