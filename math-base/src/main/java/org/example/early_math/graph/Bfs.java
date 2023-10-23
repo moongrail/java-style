@@ -1,6 +1,8 @@
 package org.example.early_math.graph;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Bfs {
     public static void main(String[] args) {
@@ -19,6 +21,7 @@ public class Bfs {
         person.getPersonDeque().add(person3);
 
         person3.getPersonDeque().add(person4);
+        person3.getPersonDeque().add(person);
         person3.getPersonDeque().add(person5);
         person3.getPersonDeque().add(person6);
 
@@ -29,16 +32,27 @@ public class Bfs {
     }
 
     private static String graphSearch(Person person) {
+        HashSet<Person> searchedSet = new HashSet<>();
+        searchedSet.add(person);
+
         if (!person.getPersonDeque().isEmpty()) {
             LinkedList<Person> searchQue = new LinkedList<>(person.getPersonDeque());
+
             while (!searchQue.isEmpty()) {
                 Person first = searchQue.pollFirst();
+                searchedSet.add(first);
 
                 if (first.isSeller()) {
                     return first.toString();
                 } else {
                     if (!first.getPersonDeque().isEmpty()) {
-                        searchQue.addAll(first.getPersonDeque());
+                        while (!first.getPersonDeque().isEmpty()) {
+                            Person personToAdd = first.getPersonDeque().pollFirst();
+
+                            if (!searchedSet.contains(personToAdd)) {
+                                searchQue.addLast(personToAdd);
+                            }
+                        }
                     }
                 }
             }
@@ -88,6 +102,19 @@ public class Bfs {
                     "name='" + name + '\'' +
                     ", isSeller=" + isSeller +
                     '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Person person = (Person) o;
+            return isSeller == person.isSeller && Objects.equals(name, person.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, isSeller);
         }
     }
 }
