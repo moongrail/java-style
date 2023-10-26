@@ -46,6 +46,9 @@ public class Bfs {
                     return first.toString();
                 } else {
                     if (!first.getPersonDeque().isEmpty()) {
+                        // Было два варианта, добавлять всех в очередь и потом смотреть есть ли он в уже просмотренных
+                        // людях, либо сразу проверять список у текущего, есть ли уже просмотренные и потом только
+                        // добавлять в очередь.
                         while (!first.getPersonDeque().isEmpty()) {
                             Person personToAdd = first.getPersonDeque().pollFirst();
 
