@@ -1,11 +1,9 @@
 package org.example.early_math.unit_four;
 
-import java.util.HashSet;
-
 public class Dote {
 
     public static void main(String[] args) {
-        int[][] points = {{1, 2}, {-1, 2}, {3, 4}, {-3, 4}, {-4, 4}};
+        int[][] points = {{1, 2}, {-1, 2}, {3, 4}, {-3, 4}, {-4, 4}, {-4, -4}};
 
         System.out.println("Points with mirror symmetry:");
         for (int[] point : points) {
