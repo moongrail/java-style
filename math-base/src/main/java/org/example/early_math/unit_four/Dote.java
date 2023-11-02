@@ -3,22 +3,6 @@ package org.example.early_math.unit_four;
 import java.util.HashSet;
 
 public class Dote {
-//    public static boolean hasMirrorSymmetry(int[][] points) {
-//        HashSet<Integer> xSet = new HashSet<>();
-//
-//        for (int[] point : points) {
-//            xSet.add(point[0]);
-//        }
-//
-//        for (int[] point : points) {
-//            int mirrorX = -point[0];
-//            if (!xSet.contains(mirrorX)) {
-//                return false;
-//            }
-//        }
-//
-//        return true;
-//    }
 
     public static void main(String[] args) {
         int[][] points = {{1, 2}, {-1, 2}, {3, 4}, {-3, 4}, {-4, 4}};
