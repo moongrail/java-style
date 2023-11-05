@@ -10,7 +10,7 @@ public class Fibonacci {
 //        System.out.println(getFibonacciString(41111111));
 //        System.out.println(getFibonacciList(41111111));
         //Вывод -> без рекурсии быстрее с большими числами.
-//        System.out.println(getFibonacciListNoRecursion(41111111));
+        System.out.println(getFibonacciListNoRecursion(41111111));
         System.out.println(Arrays.toString(getFibonacciArrayParseFromStringWithoutRecursion(41111111)));
     }
 
