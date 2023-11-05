@@ -96,7 +96,6 @@ public class Fibonacci {
         return fibonacciList;
     }
 
-
     private static int fibonacciRecursion(int index) {
         if (index <= 1) {
             return index;
