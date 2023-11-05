@@ -14,6 +14,63 @@ public class Fibonacci {
         System.out.println(Arrays.toString(getFibonacciArrayParseFromStringWithoutRecursion(41111111)));
     }
 
+    private static List<Integer> getFibonacciListNoRecursion(int n) {
+        if (n == 0) return List.of(0);
+
+        List<Integer> fibonacciList = new ArrayList<>();
+        int fibonacciValue = 0;
+        int prevFibonacci = 0;
+        int currentFibonacci = 1;
+
+        while (n > fibonacciValue) {
+            fibonacciValue = currentFibonacci;
+
+            if (n < fibonacciValue) {
+                break;
+            }
+
+            fibonacciList.add(fibonacciValue);
+
+            int nextFibonacci = prevFibonacci + currentFibonacci;
+            prevFibonacci = currentFibonacci;
+            currentFibonacci = nextFibonacci;
+        }
+
+        return fibonacciList;
+    }
+
+    private static int[] getFibonacciArrayParseFromStringWithoutRecursion(int n) {
+        if (n == 0) return new int[]{0};
+        StringBuilder arrayString = new StringBuilder();
+        int prevFibonacci = 0;
+        int currentFibonacci = 1;
+
+        for (int i = 0; i < n; i++) {
+            int fibonacciValue = currentFibonacci;
+            if (n < fibonacciValue) {
+                break;
+            }
+
+            int nextFibonacci = currentFibonacci + prevFibonacci;
+            prevFibonacci = currentFibonacci;
+            currentFibonacci = nextFibonacci;
+
+            arrayString.append(fibonacciValue).append(" ");
+        }
+
+        String[] stringResult = arrayString.toString().split(" ");
+        // Вариант без стримов.
+//        int arraySize = s.length;
+//        int[] fibonacciArray = new int[arraySize];
+//        for (int i = 0; i < arraySize; i++){
+//            fibonacciArray[i] = Integer.parseInt(s[i]);
+//        }
+
+        return Arrays.stream(stringResult)
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
     private static int[] getFibonacciArray(int n) {
         if (n == 0) return new int[]{0};
         int[] fibonacciArray = new int[n];
@@ -34,38 +91,6 @@ public class Fibonacci {
         System.arraycopy(fibonacciArray, 0, fibonacciArrayResult, 0, size);
 
         return fibonacciArrayResult;
-    }
-
-    private static int[] getFibonacciArrayParseFromStringWithoutRecursion(int n) {
-        if (n == 0) return new int[]{0};
-        StringBuilder arrayString = new StringBuilder();
-        int prevFibonacci = 0;
-        int currentFibonacci = 1;
-
-        for (int i = 0; i < n; i++) {
-            int fibonacciValue = currentFibonacci;
-            if (n < fibonacciValue) {
-                break;
-            }
-
-            int nextFibonacci = currentFibonacci+prevFibonacci;
-            prevFibonacci = currentFibonacci;
-            currentFibonacci = nextFibonacci;
-
-            arrayString.append(fibonacciValue).append(" ");
-        }
-
-        String[] stringResult = arrayString.toString().split(" ");
-        // Вариант без стримов.
-//        int arraySize = s.length;
-//        int[] fibonacciArray = new int[arraySize];
-//        for (int i = 0; i < arraySize; i++){
-//            fibonacciArray[i] = Integer.parseInt(s[i]);
-//        }
-
-        return Arrays.stream(stringResult)
-                .mapToInt(Integer::parseInt)
-                .toArray();
     }
 
     private static String getFibonacciString(int n) {
@@ -100,31 +125,6 @@ public class Fibonacci {
             }
             fibonacciList.add(fibonacciValue);
             index++;
-        }
-
-        return fibonacciList;
-    }
-
-    private static List<Integer> getFibonacciListNoRecursion(int n) {
-        if (n == 0) return List.of(0);
-
-        List<Integer> fibonacciList = new ArrayList<>();
-        int fibonacciValue = 0;
-        int prevFibonacci = 0;
-        int currentFibonacci = 1;
-
-        while (n > fibonacciValue) {
-            fibonacciValue = currentFibonacci;
-
-            if (n < fibonacciValue) {
-                break;
-            }
-
-            fibonacciList.add(fibonacciValue);
-
-            int nextFibonacci = prevFibonacci + currentFibonacci;
-            prevFibonacci = currentFibonacci;
-            currentFibonacci = nextFibonacci;
         }
 
         return fibonacciList;
